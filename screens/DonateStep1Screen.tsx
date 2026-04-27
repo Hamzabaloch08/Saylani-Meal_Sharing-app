@@ -7,7 +7,6 @@ import {
   Image,
   StyleSheet,
   Dimensions,
-  StatusBar,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -29,81 +28,72 @@ const DonateStep1Screen = () => {
   const [servings, setServings] = useState(25);
 
   return (
-    <SafeAreaView edges={["top"]} style={{ flex: 1, backgroundColor: "#F9FBFC" }}>
-      <StatusBar barStyle="dark-content" />
-      
-      {/* Premium Header */}
-      <View className="px-6 py-4 flex-row items-center justify-between">
-        <TouchableOpacity 
-          onPress={() => navigation.goBack()}
-          className="bg-white w-12 h-12 rounded-2xl items-center justify-center shadow-sm shadow-gray-100 border border-gray-50"
-        >
-          <Ionicons name="arrow-back" size={24} color={Colors.heading} />
-        </TouchableOpacity>
-        <Text className="text-xl font-jakarta-extrabold text-heading">Donate Food</Text>
-        <View className="w-12" /> {/* Spacer */}
-      </View>
+    <SafeAreaView edges={["top"]} style={{ flex: 1, backgroundColor: Colors.background }}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
+        <View className="px-6 pt-10">
+          <Text
+            className="text-3xl font-jakarta-extrabold mb-6"
+            style={{ color: Colors.heading }}
+          >
+            Donate Food
+          </Text>
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 120 }}>
-        <View className="px-6 pt-6">
-          
-          {/* Enhanced Progress Indicator */}
-          <View className="mb-10 px-1">
-            <View className="flex-row justify-between items-center mb-4">
-              <View className="flex-row items-center">
-                 <View className="bg-orange-500 w-2 h-2 rounded-full mr-2" />
-                 <Text className="text-[10px] font-jakarta-bold uppercase tracking-[2px] text-orange-500">
-                    PHASE 1: DETAILS
-                 </Text>
-              </View>
-              <Text className="text-[10px] font-jakarta-bold uppercase tracking-[2px] text-gray-300">
-                Next: Location
+          {/* Progress Indicator */}
+          <View className="mb-8">
+            <View className="flex-row justify-between items-center mb-3">
+              <Text className="text-[10px] font-jakarta-bold uppercase tracking-[1.5px]" style={{ color: Colors.primary }}>
+                Step 1 of 2
+              </Text>
+              <Text className="text-[10px] font-jakarta-bold uppercase tracking-[1.5px] text-gray-400">
+                Details
               </Text>
             </View>
-            <View className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+            <View className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
               <View className="h-full bg-orange-500 rounded-full" style={{ width: "50%" }} />
             </View>
           </View>
 
-          {/* Dynamic Headline */}
-          <View className="mb-10">
-            <Text className="text-4xl font-jakarta-extrabold text-heading leading-tight">
-              Share your{"\n"}<Text className="text-primary">generosity</Text>
+          {/* Title Section */}
+          <View className="mb-8">
+            <Text className="text-4xl font-jakarta-extrabold" style={{ color: Colors.heading }}>
+              Tell us about
             </Text>
-            <Text className="text-sm font-jakarta-medium text-gray-400 mt-3 leading-6">
-              Listing your surplus food helps us ensure no one in your community goes hungry today.
+            <Text className="text-4xl font-jakarta-extrabold" style={{ color: Colors.primary }}>
+              the food
+            </Text>
+            <Text className="text-sm font-jakarta text-gray-400 mt-2 leading-6">
+              Your contribution helps us match donations with local community needs accurately.
             </Text>
           </View>
 
-          {/* Premium Image Upload Area */}
+          {/* Image Upload Area */}
           <TouchableOpacity 
-            className="mb-10 bg-white border-2 border-dashed border-orange-100 rounded-[45px] h-64 items-center justify-center overflow-hidden shadow-sm shadow-orange-50"
-            activeOpacity={0.8}
+            className="mb-10 bg-gray-50 border-2 border-dashed border-gray-200 rounded-[40px] h-60 items-center justify-center overflow-hidden"
+            activeOpacity={0.7}
           >
             <Image 
-              source={{ uri: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1000' }} 
-              className="absolute w-full h-full opacity-5"
-              resizeMode="cover"
+              source={{ uri: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1000&auto=format&fit=crop' }} 
+              className="absolute w-full h-full opacity-10"
             />
-            <View className="bg-orange-50 w-20 h-20 rounded-[30px] items-center justify-center mb-4">
-              <Ionicons name="camera" size={32} color={Colors.primary} />
+            <View className="bg-white p-4 rounded-3xl shadow-sm mb-4">
+              <Ionicons name="camera-outline" size={32} color={Colors.primary} />
             </View>
-            <Text className="font-jakarta-extrabold text-lg text-heading">
+            <Text className="font-jakarta-bold text-base" style={{ color: Colors.heading }}>
               Add Food Photos
             </Text>
-            <Text className="text-xs font-jakarta-medium text-gray-400 mt-1">
-              Tap to capture or upload
+            <Text className="text-xs font-jakarta text-gray-400 mt-1">
+              Maximum 3 high-quality shots
             </Text>
             
-            <View className="absolute bottom-6 right-8 bg-orange-500 w-12 h-12 rounded-2xl items-center justify-center shadow-lg shadow-orange-200">
-              <Ionicons name="add" size={24} color="white" />
+            <View className="absolute bottom-6 right-6 bg-white p-3 rounded-2xl shadow-lg">
+              <Ionicons name="camera" size={20} color={Colors.primary} />
             </View>
           </TouchableOpacity>
 
-          {/* Grid Category Section */}
+          {/* Category Section */}
           <View className="mb-10">
-            <Text className="text-[10px] font-jakarta-bold uppercase tracking-[2px] text-gray-400 mb-6 ml-1">
-              Select Food Category
+            <Text className="text-[10px] font-jakarta-bold uppercase tracking-[2px] text-gray-400 mb-6">
+              Food Category
             </Text>
             <View className="flex-row flex-wrap gap-4">
               {categories.map((cat) => (
@@ -111,22 +101,23 @@ const DonateStep1Screen = () => {
                   key={cat.id}
                   onPress={() => setSelectedCategory(cat.id)}
                   style={{
-                    backgroundColor: selectedCategory === cat.id ? Colors.primary : "white",
+                    backgroundColor: selectedCategory === cat.id ? Colors.primary : Colors.white,
                     width: (width - 64) / 2,
                     shadowColor: selectedCategory === cat.id ? Colors.primary : "#000",
-                    shadowOpacity: selectedCategory === cat.id ? 0.2 : 0.03,
-                    shadowRadius: 15,
-                    elevation: 8,
+                    shadowOpacity: selectedCategory === cat.id ? 0.3 : 0.05,
+                    shadowRadius: 10,
+                    elevation: 5,
                   }}
-                  className={`flex-row items-center p-5 rounded-[28px] border ${selectedCategory === cat.id ? "border-primary" : "border-gray-50"}`}
+                  className="flex-row items-center p-4 rounded-3xl"
                 >
                   <MaterialCommunityIcons 
                     name={cat.icon as any} 
-                    size={22} 
+                    size={20} 
                     color={selectedCategory === cat.id ? "white" : Colors.primary} 
                   />
                   <Text 
-                    className={`ml-3 font-jakarta-extrabold text-sm ${selectedCategory === cat.id ? "text-white" : "text-heading"}`}
+                    className="ml-3 font-jakarta-bold text-sm"
+                    style={{ color: selectedCategory === cat.id ? "white" : Colors.heading }}
                   >
                     {cat.label}
                   </Text>
@@ -135,80 +126,77 @@ const DonateStep1Screen = () => {
             </View>
           </View>
 
-          {/* Overhauled Servings Picker */}
-          <View className="mb-10 bg-white p-8 rounded-[45px] shadow-xl shadow-blue-50/50 border border-gray-50">
-            <View className="flex-row justify-between items-center mb-10">
-              <View>
-                <Text className="text-[10px] font-jakarta-bold uppercase tracking-[2px] text-gray-400 mb-1">
-                  Estimated Servings
-                </Text>
-                <Text className="text-sm font-jakarta-medium text-gray-300">How many people can this feed?</Text>
-              </View>
-              <View className="bg-orange-50 px-5 py-3 rounded-2xl">
-                <Text className="text-3xl font-jakarta-extrabold text-primary">
+          {/* Servings Section */}
+          <View className="mb-10 bg-white p-8 rounded-[40px] shadow-sm shadow-blue-50 border border-gray-50">
+            <View className="flex-row justify-between items-center mb-8">
+              <Text className="text-[10px] font-jakarta-bold uppercase tracking-[2px] text-gray-400">
+                Estimated Servings
+              </Text>
+              <View className="flex-row items-end">
+                <Text className="text-4xl font-jakarta-extrabold" style={{ color: Colors.heading }}>
                   {servings}
                 </Text>
+                <Text className="text-lg font-jakarta-bold ml-1 mb-1" style={{ color: Colors.primary }}>+</Text>
               </View>
             </View>
 
-            <View className="h-4 justify-center">
-              <View className="h-2 w-full bg-gray-100 rounded-full">
+            {/* Slider Placeholder (using View as requested before) */}
+            <View className="h-10 justify-center">
+              <View className="h-1.5 w-full bg-gray-100 rounded-full">
                 <View 
                   className="h-full bg-orange-500 rounded-full relative" 
                   style={{ width: `${(servings / 100) * 100}%` }} 
                 >
-                  <View className="absolute right-0 top-[-10px] w-7 h-7 bg-white border-[6px] border-orange-500 rounded-full shadow-lg" />
+                  <View className="absolute right-0 top-[-8px] w-6 h-6 bg-white border-4 border-orange-500 rounded-full shadow-md" />
                 </View>
               </View>
             </View>
             
-            <View className="flex-row justify-between mt-6 px-1">
-              <Text className="text-[9px] font-jakarta-extrabold text-gray-300">10 PERS</Text>
-              <Text className="text-[9px] font-jakarta-extrabold text-gray-300">50 PERS</Text>
-              <Text className="text-[9px] font-jakarta-extrabold text-gray-300">100+ PERS</Text>
+            <View className="flex-row justify-between mt-4">
+              <Text className="text-[9px] font-jakarta-bold text-gray-300 uppercase">10 Pers</Text>
+              <Text className="text-[9px] font-jakarta-bold text-gray-300 uppercase">50 Pers</Text>
+              <Text className="text-[9px] font-jakarta-bold text-gray-300 uppercase">100+ Pers</Text>
             </View>
           </View>
 
-          {/* Premium Scheduling Inputs */}
-          <View className="mb-12">
-            <Text className="text-xl font-jakarta-extrabold text-heading mb-6 ml-1">
-              Time Sensitivity
+          {/* Scheduling Section */}
+          <View className="mb-6">
+            <Text className="text-2xl font-jakarta-extrabold mb-6" style={{ color: Colors.heading }}>
+              Scheduling
             </Text>
             
             <View className="flex-row gap-x-4">
               <View className="flex-1">
-                <Text className="text-[10px] font-jakarta-bold uppercase tracking-[2px] text-gray-400 mb-4 ml-1">
+                <Text className="text-[10px] font-jakarta-bold uppercase tracking-[1.5px] text-gray-400 mb-3">
                   Ready Time
                 </Text>
-                <TouchableOpacity className="bg-white p-6 rounded-[30px] flex-row items-center justify-between border border-gray-50 shadow-sm shadow-blue-50">
-                  <Text className="font-jakarta-extrabold text-heading">12:00 PM</Text>
-                  <Ionicons name="time" size={20} color={Colors.primary} />
+                <TouchableOpacity className="bg-white p-5 rounded-3xl flex-row items-center justify-between border border-gray-50 shadow-sm shadow-blue-50">
+                  <Text className="font-jakarta-bold" style={{ color: Colors.heading }}>12:00 PM</Text>
+                  <Ionicons name="time-outline" size={20} color={Colors.primary} />
                 </TouchableOpacity>
               </View>
 
               <View className="flex-1">
-                <Text className="text-[10px] font-jakarta-bold uppercase tracking-[2px] text-gray-400 mb-4 ml-1">
-                  Best Before
+                <Text className="text-[10px] font-jakarta-bold uppercase tracking-[1.5px] text-gray-400 mb-3">
+                  Expiry Notice
                 </Text>
-                <TouchableOpacity className="bg-white p-6 rounded-[30px] flex-row items-center justify-between border border-gray-50 shadow-sm shadow-blue-50">
-                  <Text className="font-jakarta-extrabold text-heading">06:00 PM</Text>
-                  <MaterialCommunityIcons name="timer-sand" size={20} color={Colors.primary} />
+                <TouchableOpacity className="bg-white p-5 rounded-3xl flex-row items-center justify-between border border-gray-50 shadow-sm shadow-blue-50">
+                  <Text className="font-jakarta-bold" style={{ color: Colors.heading }}>06:00 PM</Text>
+                  <MaterialCommunityIcons name="hourglass-empty" size={20} color={Colors.primary} />
                 </TouchableOpacity>
               </View>
             </View>
           </View>
-
-          {/* Final Action Button */}
-          <View className="pb-10">
+          {/* Footer Button - Non-sticky */}
+          <View className="py-10 mt-4">
             <TouchableOpacity 
-              activeOpacity={0.9}
-              className="bg-orange-600 py-6 rounded-[35px] flex-row items-center justify-center shadow-2xl shadow-orange-300"
+              className="bg-orange-500 py-6 rounded-[30px] flex-row items-center justify-center shadow-lg shadow-orange-200"
               onPress={() => navigation.navigate("DonateStep2")}
             >
-              <Text className="text-white font-jakarta-extrabold text-base uppercase tracking-[2px] mr-2">
-                Continue to location
+              <Text className="text-white font-jakarta-extrabold text-base uppercase tracking-widest mr-2">
+                Continue
               </Text>
-              <Ionicons name="arrow-forward" size={20} color="white" />
+              <Ionicons name="chevron-forward" size={20} color="white" />
             </TouchableOpacity>
           </View>
         </View>
