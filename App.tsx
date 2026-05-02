@@ -11,6 +11,8 @@ import { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "./global.css";
 import { Navigator } from "./Navigation/Navigator";
+import { Provider } from 'react-redux';
+import { store } from "./redux/store/store";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -35,7 +37,9 @@ const App = () => {
 
   return (
     <SafeAreaProvider style={{ flex: 1 }}  >
+    <Provider store={store}>
       <Navigator />
+    </Provider>
     </SafeAreaProvider>
   );
 };

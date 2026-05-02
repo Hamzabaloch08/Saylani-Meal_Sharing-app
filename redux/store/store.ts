@@ -1,12 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { setupListeners } from '@reduxjs/toolkit/query'
+import { configureStore } from '@reduxjs/toolkit';
+import authApi from '../rtkQuerys/auth/authQuery';
 
 export const store = configureStore({
   reducer: {
+    [authApi.reducerPath]: authApi.reducer,
   },
-
   middleware: (getDefaultMiddleware) =>
-    
-})
-
-setupListeners(store.dispatch)
+    getDefaultMiddleware().concat(authApi.middleware),
+});

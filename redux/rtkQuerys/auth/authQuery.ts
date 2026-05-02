@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { API_BASE_URL } from "./../../../constants/api";
 import {
   loginPyload,
@@ -41,3 +41,13 @@ export const authApi = createApi({
     }),
   }),
 });
+
+// Export hooks for usage in functional components, which are auto-generated based on the defined endpoints
+export const {
+  useSignupUserMutation,
+  useLoginUserMutation,
+  useVerifyEmailMutation,
+  useForgetPasswordMutation,
+} = authApi;
+
+export default authApi;

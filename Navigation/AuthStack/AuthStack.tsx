@@ -3,9 +3,10 @@ import LoginScreen from "@/screens/LoginScreen";
 import SignupScreen from "@/screens/SignupScreen";
 
 import { stackScreenOptions } from "@/constants/stackScreenOptions";
+import { AuthStackParamList } from "@/types/navigation";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<AuthStackParamList>();
 
 export const AuthStack = () => (
   <Stack.Navigator screenOptions={stackScreenOptions}>

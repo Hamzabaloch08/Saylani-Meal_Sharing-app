@@ -1,21 +1,19 @@
+import { BottomTabParamList } from "@/types/navigation";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Colors } from "../../constants/Colors";
-import DonateStack from "../DonateStack/DonateStack";
-import DashboardStack from "./DashboardStack/DashboardStack";
 import HistoryScreen from "../../screens/HistoryScreen";
+import DashboardStack from "./DashboardStack/DashboardStack";
+import DonateStack from "./DonateStack/DonateStack";
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 const TabIcon = ({ name, focused }: { name: any; focused: boolean }) => {
   return (
-    <View style={[
-      styles.iconContainer,
-      focused && styles.activeIconContainer
-    ]}>
+    <View style={[styles.iconContainer, focused && styles.activeIconContainer]}>
       <Ionicons
         name={name}
         size={26}
@@ -39,7 +37,7 @@ const BottomTabs = () => {
           borderTopWidth: 0,
           borderTopLeftRadius: 35,
           borderTopRightRadius: 35,
-          position: 'absolute',
+          position: "absolute",
           bottom: 0,
           left: 0,
           right: 0,
@@ -50,9 +48,9 @@ const BottomTabs = () => {
           shadowRadius: 20,
         },
         tabBarItemStyle: {
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
         },
       }}
     >
@@ -116,8 +114,8 @@ const styles = StyleSheet.create({
     width: 55,
     height: 55,
     borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   activeIconContainer: {
     backgroundColor: Colors.primary + "1A", // Light orange highlight

@@ -13,7 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../constants/Colors";
 
 const DonateStep2Screen = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation();
   const [deliveryMethod, setDeliveryMethod] = useState("pickup");
 
   return (

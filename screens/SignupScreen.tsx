@@ -11,12 +11,17 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../constants/Colors";
+import { useSignupUserMutation } from "@/redux/rtkQuerys/auth/authQuery";
+import { useAuthNavigation } from "@/types/navigation";
 
 const SignupScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useAuthNavigation();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+
+  const [signupUser, { isLoading,isError, isSuccess }] = useSignupUserMutation();
+  
 
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: Colors.background }}>

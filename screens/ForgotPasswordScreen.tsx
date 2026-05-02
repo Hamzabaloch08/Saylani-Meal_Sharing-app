@@ -1,25 +1,25 @@
+import { useAuthNavigation } from "@/types/navigation";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
-  Platform,
   ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "../constants/Colors";
 
-const ForgotPasswordScreen = ({ navigation }: any) => {
+const ForgotPasswordScreen = () => {
   const [resetValue, setResetValue] = useState("");
+  const navigation = useAuthNavigation();
 
   return (
     <SafeAreaView className="flex-1 bg-[#F3F7FA] justify-center">
       <ScrollView
-        contentContainerStyle={{ flex: 1, justifyContent: 'center' }}
+        contentContainerStyle={{ flex: 1, justifyContent: "center" }}
         keyboardShouldPersistTaps="never"
         showsVerticalScrollIndicator={false}
         scrollEnabled={false}
@@ -29,10 +29,12 @@ const ForgotPasswordScreen = ({ navigation }: any) => {
           <View className="flex-1 justify-center items-center">
             {/* Hero Icon Section */}
             <View className="mb-12">
-              <View
-                className="w-32 h-32 bg-white rounded-full items-center justify-center"
-              >
-                <MaterialCommunityIcons name="lock-reset" size={60} color={Colors.primary} />
+              <View className="w-32 h-32 bg-white rounded-full items-center justify-center">
+                <MaterialCommunityIcons
+                  name="lock-reset"
+                  size={60}
+                  color={Colors.primary}
+                />
               </View>
             </View>
 
@@ -108,7 +110,11 @@ const ForgotPasswordScreen = ({ navigation }: any) => {
 
           {/* Bottom Footer Section */}
           <View className="flex-row items-center justify-center mt-10">
-            <Ionicons name="shield-checkmark" size={16} color={Colors.primary} />
+            <Ionicons
+              name="shield-checkmark"
+              size={16}
+              color={Colors.primary}
+            />
             <Text
               className="text-[10px] font-bold ml-2 uppercase tracking-widest font-jakarta"
               style={{ color: Colors.text }}
